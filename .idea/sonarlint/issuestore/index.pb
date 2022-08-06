@@ -5,5 +5,3 @@ p
 Ksrc/main/java/com/orion/financial_mss/batch/CustomerTransactionWritter.java,d/5/d54aef770260a8a7aa59891f81f548a75e37896e
 z
 Jsrc/main/java/com/orion/financial_mss/batch/CustomerTransactionReader.java,3/5/35f869ba83e3eb9554777780593809b3e6a8ba1b
-v
-Fsrc/main/java/com/orion/financial_mss/interfaces/AppUserInterface.java,3/3/3356c68d53afe3fc16f4ab650bef906b512b419b

@@ -5,5 +5,3 @@ ALTER TABLE customer_transaction
     ADD CONSTRAINT fk_cust_tran_trans_type
         FOREIGN KEY (transaction_type_id)
             REFERENCES transaction_type (id);
-
-
