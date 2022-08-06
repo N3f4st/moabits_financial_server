@@ -1,5 +1,6 @@
 package com.orion.financial_mss.model;
 import javax.persistence.*;
+import java.util.Date;
 
 @Table(name = "customer_transaction")
 @Entity
@@ -33,6 +34,9 @@ public class CustomerTransaction {
 
     @Column(name = "account_number")
     private Long accountNumber;
+
+    @Column(name = "transaction_date")
+    private Date transactionDate;
 
     public Long getId() {
         return id;
@@ -74,5 +78,12 @@ public class CustomerTransaction {
     }
     public void setTransactionTypeId(Long transactionTypeId) {
         this.transactionTypeId = transactionTypeId;
+    }
+
+    public Date getTransactionDate() {
+        return transactionDate;
+    }
+    public void setTransactionDate(Date transactionDate) {
+        this.transactionDate = transactionDate;
     }
 }

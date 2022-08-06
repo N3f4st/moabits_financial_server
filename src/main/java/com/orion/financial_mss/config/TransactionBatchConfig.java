@@ -66,7 +66,7 @@ public class TransactionBatchConfig {
 
         lineTokenizer.setDelimiter(",");
         lineTokenizer.setStrict(false);
-        lineTokenizer.setNames("customerName", "customerId", "transactionType", "amount", "accountNumber");
+        lineTokenizer.setNames("customerName", "customerId", "transactionType", "amount", "accountNumber", "transactionDate");
 
         BeanWrapperFieldSetMapper<CustomerTransaction> fieldSetMapper = new BeanWrapperFieldSetMapper<>();
         fieldSetMapper.setTargetType(CustomerTransaction.class);

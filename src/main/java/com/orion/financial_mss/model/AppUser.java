@@ -3,7 +3,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.NotBlank;
-
 import javax.persistence.*;
 
 @Table(name = "AppUser", uniqueConstraints = {@UniqueConstraint(name = "app_user_userName_unique", columnNames = "user_name")})
@@ -48,7 +47,6 @@ public class AppUser {
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -56,7 +54,6 @@ public class AppUser {
     public String getUserName() {
         return userName;
     }
-
     public void setUserName(String userName) {
         this.userName = userName;
     }
@@ -64,7 +61,6 @@ public class AppUser {
     public String getFullName() {
         return fullName;
     }
-
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
@@ -72,7 +68,6 @@ public class AppUser {
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
