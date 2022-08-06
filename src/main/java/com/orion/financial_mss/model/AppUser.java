@@ -2,6 +2,7 @@ package com.orion.financial_mss.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 
@@ -26,12 +27,15 @@ public class AppUser {
     @Column(name = "id", updatable = false)
     private Long id;
 
+    @NotBlank(message = "User Name is mandatory.")
     @Column(name = "user_name", nullable = false, columnDefinition = "TEXT")
     private String userName;
 
+    @NotBlank(message = "Your full name is mandatory.")
     @Column(name = "full_name", nullable = false, columnDefinition = "TEXT")
     private String fullName;
 
+    @NotBlank(message = "The password is mandatory.")
     @Column(name = "password", nullable = false, columnDefinition = "TEXT")
     private String password;
 
