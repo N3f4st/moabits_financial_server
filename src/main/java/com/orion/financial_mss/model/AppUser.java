@@ -1,8 +1,15 @@
 package com.orion.financial_mss.model;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Table(name = "AppUser", uniqueConstraints = {@UniqueConstraint(name = "app_user_userName_unique", columnNames = "user_name")})
 @Entity(name = "AppUser")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class AppUser {
 
     @Id
