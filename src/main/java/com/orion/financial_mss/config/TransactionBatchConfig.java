@@ -34,7 +34,7 @@ public class TransactionBatchConfig {
     ) {
 
         Step step = stepBuilderFactory.get("customer-transaction-step")
-                .<CustomerTransaction, CustomerTransaction>chunk(10000)
+                .<CustomerTransaction, CustomerTransaction>chunk(100000)
                 .reader(itemReader)
                 .processor(itemProcessor)
                 .writer(itemWriter)
@@ -53,7 +53,7 @@ public class TransactionBatchConfig {
         FlatFileItemReader<CustomerTransaction> flatFileItemReader = new FlatFileItemReader<>();
         flatFileItemReader.setResource(new FileSystemResource(path));
         flatFileItemReader.setName("CSV-Reader");
-        flatFileItemReader.setLinesToSkip(1);
+        flatFileItemReader.setLinesToSkip(0);
         flatFileItemReader.setLineMapper(lineMapper());
         return flatFileItemReader;
     }

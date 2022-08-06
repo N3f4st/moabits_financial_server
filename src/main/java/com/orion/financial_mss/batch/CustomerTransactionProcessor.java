@@ -16,7 +16,9 @@ public class CustomerTransactionProcessor implements ItemProcessor<CustomerTrans
 @Override
     public CustomerTransaction process(CustomerTransaction customerTransaction) throws Exception {
 
-        if (customerTransaction.getTransactionTypeId() > 3 && customerTransaction.getTransactionTypeId() < 0) throw new Exception();
+        if (customerTransaction.getTransactionTypeId() < 1 || customerTransaction.getTransactionTypeId() > 3) {
+            throw new Exception("The Transactions types allowed on the csv files are between 1 and 3");
+        }
         return customerTransaction;
     }
 }
