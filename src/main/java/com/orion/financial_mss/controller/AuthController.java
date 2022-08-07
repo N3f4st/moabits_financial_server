@@ -18,7 +18,7 @@ import java.util.Map;
 public class AuthController {
     private final AppUserService appUserService;
 
-    @GetMapping("/register")
+    @PostMapping("/register")
     public AppUser registerUser(@Valid @RequestBody AppUser appUser) throws MethodArgumentNotValidException {
         return appUserService.saveAppUser(appUser);
     }
