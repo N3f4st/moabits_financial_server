@@ -1,5 +1,7 @@
 package com.orion.financial_mss.service;
 
+import com.orion.financial_mss.model.CustomerTransactionRequest;
+import com.orion.financial_mss.repository.CustomerTransactionRepository;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.batch.core.*;
 import org.springframework.batch.core.launch.JobLauncher;
@@ -15,11 +17,20 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
 public class CustomerTransactionService {
+
+    @Autowired
+    public void setCustomerTransactionRepository(CustomerTransactionRepository customerTransactionRepository) {
+        this.customerTransactionRepository = customerTransactionRepository;
+    }
+    CustomerTransactionRepository customerTransactionRepository;
+
     @Autowired
     JobLauncher jobLauncher;
 
@@ -35,7 +46,7 @@ public class CustomerTransactionService {
         fileDirectorySb.append(path);
         fileDirectorySb.append("/tmpuploads/");
         File directory = new File(fileDirectorySb.toString());
-        if (! directory.exists()){
+        if (!directory.exists()) {
             directory.mkdir();
         }
 
@@ -52,7 +63,7 @@ public class CustomerTransactionService {
 
         // Executes the job.
         Map<String, JobParameter> maps = new HashMap<>();
-        maps.put("path",new JobParameter(fileToImport.toString()));
+        maps.put("path", new JobParameter(fileToImport.toString()));
         maps.put("time", new JobParameter(System.currentTimeMillis()));
         JobParameters parameters = new JobParameters(maps);
         JobExecution jobExecution = jobLauncher.run(job, parameters);
@@ -61,5 +72,11 @@ public class CustomerTransactionService {
         return jobExecution.getStatus();
     }
 
-
+     public List<Map<String, ?>> getTransactionsByCustomerIdAndDates(CustomerTransactionRequest customerTransactionRequest) {
+        return customerTransactionRepository.getTransactionsByCustomerIdAndDates(customerTransactionRequest.getCustomerId(),
+                new Date(customerTransactionRequest.getFromDate().getTime() + 86400000) ,
+                new Date(customerTransactionRequest.getToDate().getTime() + 86400000),
+                customerTransactionRequest.getPage(),
+                customerTransactionRequest.getRowsQty());
+    }
 }
