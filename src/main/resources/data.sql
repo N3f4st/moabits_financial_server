@@ -14,7 +14,3 @@ insert into customer (id, credit_limit, full_name, short_name) select 1, 295832,
 insert into customer (id, credit_limit, full_name, short_name) select 2, 1890243, 'Banco de Fomento a la Producción', 'BFP' where not exists (select id from customer where id = 2);
 insert into customer (id, credit_limit, full_name, short_name) select 3, 448923, 'Banco de América Central', 'BAC' where not exists (select id from customer where id = 3);
 
--- appUsers
-insert into app_user (id, full_name, password, user_name)
-SELECT 1, 'TestingPurposesUser', '2!"3NHK89FMKN4%$', 'jurg' WHERE NOT exists(select id from app_user where id = 1 );
-

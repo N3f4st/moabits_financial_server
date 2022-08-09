@@ -20,4 +20,10 @@ public interface CustomerTransactionRepository extends CrudRepository<CustomerTr
             @Param("_page") Long page,
             @Param("_rows_qty") Long rowsQty
     );
+
+    final String rowsQtyByCustomerIdAndDates = "select count (1) from customer_transaction t where t.customer_id = :_customer_id and transaction_date between :_fromDate and :_toDate";
+    @Query(value = rowsQtyByCustomerIdAndDates, nativeQuery = true)
+    long getRowsQtyByCustomerIdAndDates(@Param("_customer_id") Long customerId,
+                                        @Param("_fromDate") Date fromDate,
+                                        @Param("_toDate") Date toDate);
 }

@@ -34,7 +34,7 @@ public class TransactionBatchConfig {
     ) {
 
         Step step = stepBuilderFactory.get("customer-transaction-step")
-                .<CustomerTransaction, CustomerTransaction>chunk(100000)
+                .<CustomerTransaction, CustomerTransaction>chunk(1000)
                 .reader(itemReader)
                 .processor(itemProcessor)
                 .writer(itemWriter)

@@ -38,6 +38,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(authenticationFilter);
         http.addFilterBefore(new AuthorizationFilter(secretJwtString), UsernamePasswordAuthenticationFilter.class);
+        http.cors();
     }
 
     @Bean

@@ -79,4 +79,11 @@ public class CustomerTransactionService {
                 customerTransactionRequest.getPage(),
                 customerTransactionRequest.getRowsQty());
     }
+
+    public Long getRowsQtyByCustomerIdAndDates(CustomerTransactionRequest customerTransactionRequest) {
+        return customerTransactionRepository.getRowsQtyByCustomerIdAndDates(customerTransactionRequest.getCustomerId(),
+                new Date(customerTransactionRequest.getFromDate().getTime() + 86400000),
+                new Date(customerTransactionRequest.getToDate().getTime() + 86400000));
+    }
+
 }

@@ -34,4 +34,9 @@ public class CustomerTransactionController {
     public List<Map<String, ?>> transactionsByCustomerAndDate(@RequestBody CustomerTransactionRequest customerTransactionRequest) {
         return customerTransactionService.getTransactionsByCustomerIdAndDates(customerTransactionRequest);
     }
+
+    @PostMapping("/rowsQtyByCustomerIdAndDates")
+    public Long getRowsQtyByCustomerIdAndDates(@RequestBody CustomerTransactionRequest customerTransactionRequest) {
+        return customerTransactionService.getRowsQtyByCustomerIdAndDates(customerTransactionRequest);
+    }
 }

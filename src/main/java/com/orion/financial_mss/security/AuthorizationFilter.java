@@ -22,6 +22,7 @@ import java.util.Map;
 
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
+import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 public class AuthorizationFilter extends OncePerRequestFilter {
@@ -51,7 +52,7 @@ public class AuthorizationFilter extends OncePerRequestFilter {
                     filterChain.doFilter(request, response);
                 } catch (Exception exception) {
                     response.setHeader("error", exception.getMessage());
-                    response.setStatus(INTERNAL_SERVER_ERROR.value());
+                    response.setStatus(UNAUTHORIZED.value());
                     Map<String, String> errorResponse = new HashMap<>();
                     errorResponse.put("error", exception.getMessage());
                     response.setContentType(APPLICATION_JSON_VALUE);
