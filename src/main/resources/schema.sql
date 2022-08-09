@@ -6,7 +6,7 @@ ALTER TABLE customer_transaction
         FOREIGN KEY (transaction_type_id)
             REFERENCES transaction_type (id);
 
--- function to retrieve transactions with its balances with some parameters
+-- function to retrieve transactions with its balances with some parammeters
 create or replace function fn_transactionsByCustomerAndDates(_customer_id bigint, _fromDate date, _toDate date, _page bigint, _rows_qty bigint)
     returns table (id bigint, accountNumber bigint, transactionDate date, transactionType text, amount numeric(18,8), balance numeric(18,8))
 as
